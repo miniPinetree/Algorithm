@@ -22,6 +22,24 @@
 # 10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
 
 #문제풀이
-max_num = 10000
-for i in range(max_num):
-    
+
+def find_self_num():
+    self_num = set(range(1,10001))
+    generated_num = set()
+
+    for n in self_num: #1~1만 숫자 범위 내의 숫자들을 반복한다.
+        for i in str(n): # 숫자를 자릿수별로 분리해서 합산해본다
+            n += int(i)
+        generated_num.add(n)
+    self_num = self_num - generated_num
+    for n in sorted(self_num):
+        print(n)
+
+find_self_num()
+
+# 접근 방식
+# d(n) 공식에 숫자를 대입했을 때 결과가 있다면 그 수는 셀프넘버가 아니다.
+# 1부터 1만까지의 수를 대입하여 셀프넘버가 아닌 수를 구한다.
+# 1부터 1만까지의 수 중 셀프넘버가 아닌 수를 제외시킨다.
+# 남는 값은 셀프넘버가 된다.
+
