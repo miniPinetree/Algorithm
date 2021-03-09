@@ -16,7 +16,7 @@ for char in word:
         count[char] = 1
 
 sorted_count = sorted(count.items(), key = lambda x:x[1], reverse =True)
-#Tuple 형태여서 value로 가져올 수 없으므로 인덱스를 주어 발생횟수를 가져온다.
+
 
 if len(sorted_count) > 1 :
     if sorted_count[0][1] == sorted_count[1][1]:
