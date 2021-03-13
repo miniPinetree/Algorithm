@@ -21,16 +21,14 @@
 # 출력
 # 첫째 줄에 상근이가 창영이의 방법을 사용할 때, 설정해야 하는 알람 시간을 출력한다. (입력과 같은 형태로 출력하면 된다.)
 
-# 자료 입력
-H, M = input().split()
+import sys
 
-H = int(H)
-M = int(M)
-# 문제 풀이
-if M >= 45:
-    print(H, M-45)
-elif H > 0:
-    print(H-1, 60-(45-M))
+h, m = list(map(int, sys.stdin.readline().split()))
+if m>=45:
+    print(h, m-45)
 else:
-    print(23, 60-(45-M))
+    if h==0:
+        print(23, 60+m-45)
+    else:
+        print(h-1, 60+m-45)
 

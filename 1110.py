@@ -34,3 +34,24 @@ while True:
         break
 
 print(cycle_count)
+
+## 다른 접근 방식 (시간초과)
+# import sys
+
+# n= str(input())
+# check = n
+# cnt = 0
+
+# while True:
+#     sum = 0
+#     for char in n:
+#         sum += int(char)
+#     new_num = n[-1]+str(sum)[-1]
+#     cnt +=1
+#     if new_num == check:
+#         print(cnt)
+#         break
+#     else:
+#         n = new_num
+
+
