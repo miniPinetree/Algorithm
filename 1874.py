@@ -1,5 +1,9 @@
 import sys
-
+sequence = list()
+n = int(sys.stdin.readline())
+for _ in range(n):
+    sequence.append(int(sys.stdin.readline()))
+    
 def stack_sequence(n,sequence):
     stack = []
     num = 1
@@ -29,8 +33,5 @@ def stack_sequence(n,sequence):
         for char in result:
             print(char)
 
-sequence = list()
-n = int(sys.stdin.readline())
-for _ in range(n):
-    sequence.append(int(sys.stdin.readline()))
+
 stack_sequence(n, sequence)
