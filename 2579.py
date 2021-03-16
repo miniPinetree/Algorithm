@@ -1,21 +1,17 @@
 n = int(input())
-s_num = []
+stairs = []
 for _ in range(n):
-    s= int(input())
-    s_num_list.append(s)
+    stairs.append(int(input()))
 
-dp=[s_num_list[-1]] #반드시 밟아야하는 도착계단에서부터 계산한다.
-idx = -1 # 시작점을 맨 뒤에 위치한 도착계단으로 설정한다.
+dp=[0 for _ in range(n)]
 
-while idx-3>= -len(s_num):
-    opt1 = s_num[idx-1]+s_num[idx-3]
-    opt2 = s_num[idx-2]
-    if opt1>=opt2:
-        idx -=3
-        dp.append(dp[-1]+opt1)
-    else opt1<opt2:
-        idx-=2
-        dp.append(dp[-1]+opt2)
-if 
-#앞 계단이 3개 미만으로 남았을때는 인덱스 오류가 날텐데 어쩌지?
+dp[0] = stairs[0]
 
+#1~3번째 계단은 점화식이 적용되지 않는다.
+for i in range(1,n):
+    if i<=2:
+        dp[i] = max(stairs[i-1]+stairs[i],dp[0]+stairs[i])
+    else:
+        dp[i] = max(stairs[i]+stairs[i-1]+dp[i-3], stairs[i]+dp[i-2])
+
+print(dp[n-2]) #n이 저장된 인덱스 값
