@@ -1,0 +1,59 @@
+
+# Bubble Sort
+## 개념
+서로 인접한 두 원소의 대소를 비교하고, 조건에 맞지 않다면 자리를 교환하며 정렬하는 알고리즘
+정렬 과정이 버블이 올라오는 듯하여 이러한 이름이 붙여졌다. ![](https://images.velog.io/images/mygomi/post/a156b058-974e-4354-8ba2-785ea2166109/1_4WTCQ27VSG7RPlQTWh0Amg.gif)
+
+
+## 과정
+![](https://images.velog.io/images/mygomi/post/f6e95756-06d6-41b1-b84f-16284f6213d9/1_7seGXJi3te9beNfpAvFXEQ.gif)
+
+1. 인접한 두 원소를 비교하여 조건에 맞지 않으면 자리를 교환한다.
+2. 전체 원소 비교를 1회 끝마치면 최소(or최대)값이 가장자리에 위치하게 되는데 **2회차 비교 시에는 최소(or최대)값을 제외한 나머지 원소 범위 내에서 비교를 수행**한다. 
+
+> 그 결과, 반복이 진행될수록 무시하는 범위가 커져 끝으로 갈수록 속도가 빨라진다.
+
+## 시간복잡도
+`(n-1)+(n-2)+(n-3)+...+2+1=>n(n-1)/2`
+**O(n^2)**
+## 장단점
+### 장점
+- 구현이 간단하고 소스코드가 직관적임.
+- 메모리 절약
+정렬하고자 하는 배열 안에서 교환하는 방식으로 다른 메모리 공간 불필요 
+(in-place sorting 제자리정렬)
+
+### 단점
+- 시간복잡도 비효율적
+- 자료 개수가 많아질수록 
+
+## 특징
+### Stable
+중복 데이터가 있는 경우 데이터가 교환되지 않고 정렬이 다 끝난 후에도 기존 중복 데이터의 순서가 유지되는 정렬
+
+## 코드
+```js
+function bubbleSort (array) {
+  for(let i=0; i<array.length; i++){
+    let swap;
+    for(let j=0; j<array.length-1-i; j++){
+      if(array[j]>array[j+1]){
+        swap = array[j];
+        array[j] = array[j+1];
+        array[j+1] = swap;
+      }
+    }
+    console.log(`${i}회전 : ${array}`)
+    if(!swap){
+      break;
+    }
+  }
+  return array;
+}
+console.log(bubbleSort([5,7,3,4,1,6,2]));
+```
+
+
+참고자료 
+https://medium.com/@peterlin5301997/bubble-sort-5a66156c942e
+https://im-developer.tistory.com/133
