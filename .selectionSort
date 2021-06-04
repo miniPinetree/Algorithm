@@ -1,0 +1,70 @@
+
+# Selection Sort
+## 개념
+>**배열 안에서 가장 작은 수(혹은 가장 큰 수)를 찾아 첫 번째 위치(혹은 가장 마지막 위치)의 수와 교환해주는 방식의 정렬**
+
+선택 정렬은 교환 횟수를 최소화하는 반면 각 자료를 비교하는 횟수는 증가한다.
+
+## 과정
+![](https://images.velog.io/images/mygomi/post/a3f3e8d5-ffaa-4c99-a9ee-cf4e48230182/selection-sort-001.gif)
+
+
+1. 숫자들 중에서 가장 작은 값을 찾는다.
+2. 가장 작은 값은 가장 앞에 있어야 하므로 현재 리스트의 첫 번째 값과 자리를 교환한다.
+3. 정렬된 가장 앞 자리를 제외하고 두 번째 숫자부터 시작해서 1,2번을 반복한다.
+
+## 시간복잡도
+
+>### Big-O : O(n^2)
+### Big-Ω : Ω(n^2)
+
+` (n-1)*(n-2) = n^2-3n+2`
+바깥 루프에서는 숫자들을 처음부터 순서대로 방문하고, 안쪽 루프에서는 가장 작은 값을 찾아야하므로 두 번의 루프를 돈다.
+
+## 장단점
+### 장점
+- 버블 정렬과 마찬가지로 알고리즘이 단순하다.
+- 메모리 절약
+정렬하고자 하는 배열 안에서 교환하는 방식으로 다른 메모리 공간 불필요 
+(in-place sorting 제자리정렬)
+
+### 단점
+- 시간복잡도 비효율적
+
+## 특징
+### Unstable
+중복 데이터가 있는 경우 기존 중복 데이터 순서가 바뀔 수 있다.
+
+## 코드
+```js
+function selectionSort (array) {
+  for(let i=0; i<array.length; i++){
+    let minIdx = i;
+    for(let j=i+1; j<array.length; j++){
+      if(array[minIdx]>array[j]){
+        minIdx = j;
+      }
+    }
+    if(minIdx !== i){
+      let swap = array[minIdx];
+      array[minIdx] = array[i];
+      array[i] = swap;
+      
+    }
+    console.log(`${i}회전 : ${array}`)
+  }
+  return array;
+}
+console.log(selectionSort([5,7,3,4,1,6,2]));
+```
+
+![](https://images.velog.io/images/mygomi/post/2696f587-0d7a-4dbc-b434-61e183f130b6/image.png)
+
+**맨 앞자리부터 정렬되는 것을 볼 수 있다.**
+
+---
+
+참고자료 
+CS50
+https://medium.com/@peterlin5301997/bubble-sort-5a66156c942e
+https://im-developer.tistory.com/133
