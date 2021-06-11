@@ -21,6 +21,6 @@ function solution(brown, yellow) {
           height--;
       }
   };
-  
+
   return answer;
 }
